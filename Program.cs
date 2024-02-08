@@ -1,9 +1,15 @@
+﻿using Microsoft.EntityFrameworkCore;
+using WebApplication2MVC.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PostgresDBContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDBContext") ?? throw new InvalidOperationException("Connection string 'PostgresDBContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

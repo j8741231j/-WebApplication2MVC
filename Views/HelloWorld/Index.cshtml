@@ -10,6 +10,11 @@
 
 <p>Hello from our View Template!123</p>
 
+@for (int i = 0; i < (int)ViewData["NumTimes"]!; i++)
+{
+    <li>@ViewData["Message"]</li>
+}
+
 @section Scripts {
     <script src="~/js/helloWorld.js" asp-append-version="true"></script>
     <!-- 其他脚本内容 -->
